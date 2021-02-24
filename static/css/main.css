@@ -1,0 +1,8 @@
+body {
+    margin: 0px;
+}
+
+#indexContent {
+    border: 1px solid red;
+    height: 100vh;
+}
