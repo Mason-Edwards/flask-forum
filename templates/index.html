@@ -1,11 +1,40 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block head %}
-<title>Root page</title>
+
 {% endblock %}
 
 {% block body %}
-<section id="indexContent">
+<section id="topicsPage">
+    <div id="topicsHolder">
+        <button type="button" id="newTopic">New Topic</button>
+        <div id="topicsContainer">
+            <div id="topicInfo">
+                <span class="topicInfoElement">Topic</span> <span class="topicInfoElement"
+                    style="margin-left: 1.2em;">Created By</span> <span class="topicInfoElement">Date Created</span>
+            </div>
 
+
+            <!-- Python code to load all the topics should go here-->
+            <div class="topicRow">
+                <div class="topicContentTest"><span>hello this is a long text</span></div>
+                <div class="topicCreatedBy"><span>mason</span></div>
+                <div class="topicDateCreated"><span>10/10/2000</span></div>
+            </div>
+
+            {% for (topic) in topicData %}
+            <div class="topicRow">
+                <div class="topicContentTest"><span>{{ (topic[0]) }}</span></div>
+                <div class="topicCreatedBy"><span>{{ (topic[1]) }}</span></div>
+                <div class="topicDateCreated"><span>10/10/2000</span></div>
+            </div>
+            {% endfor %}
+
+            <!-- python for here to genereate topics-->
+
+
+        </div>
+    </div>
+    </div>
 </section>
 {% endblock %}

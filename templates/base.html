@@ -2,11 +2,19 @@
 
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename="css/main.css") }}">
-    {% block head %} {% endblock %}
+    {% block head%} {% endblock %}
 </head>
 
 <body>
-    {% block body%} {% endblock %}
+    <!-- Create navbar for all pages-->
+    <div class="navBar">
+        <span id="webName"> Online Forum.com</span>
+        <a class="navElement" href="">Login</a>
+        <a class="navElement" href="">Sign Up</a>
+
+    </div>
+
+    {% block body %} {% endblock %}
 </body>
 
 </html>

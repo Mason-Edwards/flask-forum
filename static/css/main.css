@@ -1,8 +1,105 @@
 body {
     margin: 0px;
+    background-color: rgb(172, 166, 166);
 }
 
-#indexContent {
-    border: 1px solid red;
+.navBar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgb(23, 25, 26);
+}
+
+.navElement {
+    font-family: Times, serif;
+    color: white;
+    font-size: 1.5em;
+    opacity: 0.6;
+    padding-right: 50px;
+    text-decoration: none;
+    text-align: right;
+    float: right;
+}
+
+#webName {
+    color: white;
+    font-size: 1.5em;
+}
+
+#topicsPage {
+    color: white;
     height: 100vh;
+    width: 100vw;
+}
+
+#topicsHolder {
+    border: 2px solid red;
+    position: relative;
+    top: 20%;
+    left: 10em;
+    width: 80%;
+}
+
+#topicsContainer {
+    border: 2px solid red;
+    position: relative;
+    top: 100px;
+}
+
+#topicInfo {
+    position: relative;
+    left: 20%;
+    text-align: center;
+    color: black;
+    display: inline-block;
+    padding-bottom: 1em;
+}
+
+.topicInfoElement {
+    margin-right: 5em;
+    font-size: 2em;
+}
+
+.topic {
+    padding-top: 1.5em;
+    left: 20%;
+    padding-left: 12em;
+    text-align: center;
+    margin: auto;
+    color: black;
+    display: inline-block;
+}
+
+.topicContent {
+    position: relative;
+    left: 3%;
+    margin-right: 4em;
+    font-size: 2em;
+}
+
+#newTopic {
+    float: right;
+}
+
+.topicRow {
+    padding-top: 1em;
+    display: flex;
+}
+
+.topicContentTest {
+    margin-left: 11em;
+    text-align: center;
+    width: 23%;
+}
+
+.topicCreatedBy {
+    width: 10%;
+    padding-left: 2.5em;
+    text-align: center;
+}
+
+.topicDateCreated {
+    width: 10%;
+    padding-left: 11em;
+    text-align: center;
 }
