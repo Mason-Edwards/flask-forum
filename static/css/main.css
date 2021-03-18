@@ -2,6 +2,7 @@
 body {
     margin: 0px;
     background-color: rgb(172, 166, 166);
+    font-family: Arial, sans-serif;
 }
 
 .navBar {
@@ -27,6 +28,13 @@ body {
     font-size: 1.5em;
 }
 
+.btnText {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
 /* index.html */
 #topicsPage {
     color: white;
@@ -40,6 +48,10 @@ body {
     top: 20%;
     left: 10em;
     width: 80%;
+}
+
+#newTopic {
+    float: right;
 }
 
 #topicsContainer {
@@ -57,7 +69,10 @@ body {
     padding-bottom: 1em;
 }
 
-#topicInfoElement {}
+.topicInfoElement {
+    margin-right: 5em;
+    font-size: 2em;
+}
 
 .topicRow {
     padding-top: 1em;
@@ -83,7 +98,35 @@ body {
 }
 
 /* Modal Test */
-/* The Modal (background) */
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.password {
+    float: right;
+    padding-top: 16px;
+}
+
 .modal {
     display: none;
     /* Hidden by default */
@@ -107,18 +150,17 @@ body {
 }
 
 /* Modal Content/Box */
-.modal-content {
+.modalContent {
     background-color: #fefefe;
-    margin: 5px auto;
-    /* 15% from the top and centered */
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 80%;
     /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button */
+/* The Close Button (x) */
 .close {
-    /* Position it in the top right corner outside of the modal */
     position: absolute;
     right: 25px;
     top: 0;
@@ -127,7 +169,6 @@ body {
     font-weight: bold;
 }
 
-/* Close button on hover */
 .close:hover,
 .close:focus {
     color: red;
@@ -157,5 +198,17 @@ body {
 
     to {
         transform: scale(1)
+    }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    .cancelbtn {
+        width: 100%;
     }
 }

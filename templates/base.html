@@ -2,6 +2,7 @@
 
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename="css/main.css") }}">
+    <script src="{{ url_for('static', filename="js/main.js") }}"></script>
     {% block head%} {% endblock %}
 </head>
 
@@ -9,31 +10,24 @@
     <!-- Create navbar for all pages-->
     <div class="navBar">
         <span id="webName"> Online Forum.com</span>
-        <a class="navElement" href="">Login</a>
-        <a class="navElement" href="">Sign Up</a>
+        <button class="navElement btnText"
+            onclick="document.getElementById('modal01').style.display='block'">Login</button>
+        <button class="navElement btnText" onclick="document.getElementById('modal02').style.display='block'">Sign
+            Up</button>
 
     </div>
+    <!-- Modal Test -->
+    <br /><br /><br />
 
-    <!-- Button to open the modal login form -->
-    <button onclick="document.getElementById('id01').style.display='block'">Login</button>
-
-    <!-- The Modal -->
-    <div id="id01" class="modal">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close"
-            title="Close Modal">&times;</span>
-
-        <!-- Modal Content -->
-        <form class="modal-content animate" action="/action_page.php">
-            <div class="imgcontainer">
-                <img src="img_avatar2.png" alt="Avatar" class="avatar">
-            </div>
-
+    <!-- The Login Modal -->
+    <div id="modal01" class="modal">
+        <form class="modalContent animate" action="/login" method="post">
             <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
 
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
 
                 <button type="submit">Login</button>
                 <label>
@@ -42,14 +36,35 @@
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                <button type="button" onclick="document.getElementById('modal01').style.display='none'"
                     class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
+                <span class="password">Forgot <a href="">password?</a></span>
             </div>
         </form>
     </div>
-    <!-- Modal Test -->
 
+    <!-- Sign Up Modal -->
+    <div id="modal02" class="modal">
+        <form class="modalContent animate" action="/signup" method="post">
+            <div class="container">
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+                <button type="submit">Sign Up</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('modal02').style.display='none'"
+                    class="cancelbtn">Cancel</button>
+            </div>
+        </form>
+    </div>
     {% block body %} {% endblock %}
 </body>
 
