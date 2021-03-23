@@ -1,5 +1,5 @@
 TODO:
-    Add Date Created to topic and add that to the html code
-    Clean up main.css for unused code.
-    If user is logged in then change nav bar option to logout
-    If user clicks new topic and they are not logged in then ask them to login
+	Add Date Created to topic and add that to the html code
+	Clean up main.css for unused code.
+	If user is logged in then change nav bar option to logout
+	If user clicks new topic and they are not logged in then ask them to login

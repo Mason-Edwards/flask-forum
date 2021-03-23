@@ -1,7 +1,6 @@
 // Get the modal
 var modal = document.getElementById('modal01');
 
-alert("TEST");
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {

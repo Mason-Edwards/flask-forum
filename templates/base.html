@@ -10,10 +10,16 @@
     <!-- Create navbar for all pages-->
     <div class="navBar">
         <span id="webName"> Online Forum.com</span>
+        <!-- If the user is logged in, show their username, otherwise, show the login and signup buttons-->
+        {% if not session["username"] %}
         <button class="navElement btnText"
             onclick="document.getElementById('modal01').style.display='block'">Login</button>
         <button class="navElement btnText" onclick="document.getElementById('modal02').style.display='block'">Sign
             Up</button>
+        {% else %}
+        <a class="navElement" href="/signout">Sign out</a>
+        <span class="navElement">Logged In: {{ session["username"] }}</span>
+        {% endif %}
 
     </div>
     <!-- Modal Test -->
