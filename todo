@@ -3,3 +3,4 @@ TODO:
 	Clean up main.css for unused code.
 	If user is logged in then change nav bar option to logout
 	If user clicks new topic and they are not logged in then ask them to login
+	request.referer to take user back to previous page
