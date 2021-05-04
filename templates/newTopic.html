@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block head %}
-
+<title>New Topic</title>
 {% endblock %}
 
 {% block body %}
 <section>
-    <div>
+    <div class="newContentContainer">
         <form action="/createtopic" method="POST">
-            <label for="topic">Topic</label>
-            <input type="text" name="topic" placeholder="Please Enter Topic Name" required>
+            <label for="topic">Please enter in a topic</label>
+            <input type="text" name="topic" placeholder="Please Enter Topic Name" required style="width: 100%;">
             <button type="submit">Create Topic</button>
         </form>
         </form>

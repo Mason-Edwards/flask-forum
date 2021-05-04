@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Search Page</title>
+{% endblock %}
+
+{% block body %}
+{% if topicSearchData %}
+<div id="topicsHolder" style="margin-bottom: 250px ;">
+    <form action="/newtopic">
+        <button type="submit" class="newContent">New Topic</button>
+    </form>
+    <div id="topicsContainer">
+        <div id="topicInfo">
+            <span class="infoElement">Topic</span> <span class="infoElement" style="margin-left: 1.2em;">Created
+                By</span> <span class="infoElement">Date Created</span>
+        </div>
+
+        <!-- Python code to load all the topics should go here-->
+
+        {% for (topic) in topicSearchData %}
+        <form name="topicForm" action="/claims" method="POST">
+            <div class="dataRow">
+                <div class="dataContent"><button type="submit" class="btnText" name="topicData"
+                        value="{{ (topic[0]) }}">{{ (topic[0]) }}</button></div>
+                <div class="dataCreatedBy"><span>{{ (topic[1]) }}</span></div>
+                <div class="dataDateCreated"><span>{{ (topic[2] )}}</span></div>
+        </form>
+        {% if session["admin"] == "1"%}
+        <form name="deleteButton" action="/deletetopic" method="POST">
+            <div class="deleteButton"><button type="submit" class="btnText" name="topic" value=" {{ topic[0] }}">
+                    Delete Topic</button></div>
+            {% endif %}
+        </form>
+    </div>
+    {% endfor %}
+
+    <!-- python for here to genereate topics-->
+</div>
+</div>
+{% endif %}
+
+{% if claimSearchData %}
+<div id="claimsHolder">
+    <form action="/newclaim">
+        <button type="submit" class="newContent">New Claim</button>
+    </form>
+    <div id="claimsContainer">
+        <div id="claimInfo">
+            <span class="infoElement">Claim</span> <span class="infoElement" style="margin-left: 1.2em;">Created
+                By</span> <span class="infoElement">Date Created</span>
+        </div>
+
+        <!-- Python code to load all the topics should go here-->
+
+        <!-- Change this  to claims info-->
+        {% for (claim) in claimSearchData %}
+        <form name="claimsForm" action="/replies" method="POST">
+            <div class="dataRow">
+                <div class="dataContent"><button type="submit" class="btnText" name="claimData"
+                        value="{{ (claim[0]) }}">{{ (claim[0]) }}</button></div>
+                <div class="dataCreatedBy"><span>{{ (claim[1]) }}</span></div>
+                <div class="dataDateCreated"><span>{{ (claim[2]) }}</span></div>
+
+        </form>
+        {% if session["admin"] == "1"%}
+        <form name="deleteButton" action="/deleteclaim" method="POST">
+            <div class="deleteButton"><button type="submit" class="btnText" name="claim" value=" {{ claim[0] }}">
+                    Delete Claim</button></div>
+            {% endif %}
+        </form>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endblock %}

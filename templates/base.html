@@ -1,4 +1,4 @@
-<html>
+<html lang="en-GB">
 
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename="css/main.css") }}">
@@ -9,7 +9,7 @@
 <body>
     <!-- Create navbar for all pages-->
     <div class="navBar">
-        <span id="webName"> Online Forum.com</span>
+        <span id="webName"> <a href="/" style="text-decoration: none; color:white">Online Forum.com</a></span>
         <!-- If the user is logged in, show their username, otherwise, show the login and signup buttons-->
         {% if not session["username"] %}
         <button class="navElement btnText"
@@ -20,8 +20,9 @@
         <a class="navElement" href="/signout">Sign out</a>
         <span class="navElement">Logged In: {{ session["username"] }}</span>
         {% endif %}
-
     </div>
+
+
     <!-- Modal Test -->
     <br /><br /><br />
 
@@ -44,7 +45,6 @@
             <div class="container" style="background-color:#f1f1f1">
                 <button type="button" onclick="document.getElementById('modal01').style.display='none'"
                     class="cancelbtn">Cancel</button>
-                <span class="password">Forgot <a href="">password?</a></span>
             </div>
         </form>
     </div>

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>New Claim</title>
+{% endblock %}
+
+{% block body %}
+<section>
+    <div class="newContentContainer">
+        <form action="/createclaim" method="POST">
+            <label for="claim">Please Enter Your Claim</label>
+            <input type="text" name="claim" placeholder="Please Enter claim Name" required>
+            <br />
+            <br />
+            <!-- Create dropdox box for relationship-->
+            <p>Relationship</p>
+            <select name="relationship" id="relationship">
+                <option value="none">None</option>
+                <option value="opposed">Opposed</option>
+                <option value="equivalent">Equivalent</option>
+            </select>
+            <br />
+            <br />
+            <p>Claim</p>
+            <select name="selectedClaim" id="selectedClaim">
+                <option value="none">None</option>
+                {% for (claim) in claims %}
+                <option value="{{ claim }}">{{claim}}</option>
+                {% endfor%}
+            </select>
+            <br />
+            <br />
+
+            <button type="submit">Create Claim</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

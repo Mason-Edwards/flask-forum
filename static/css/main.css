@@ -1,8 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap');
+
 /* base.html */
 body {
     margin: 0px;
-    background-color: rgb(172, 166, 166);
+    background-color: rgb(202, 202, 202);
     font-family: Arial, sans-serif;
+}
+
+#searchBar {
+    
+    position: relative;
+    top: 10%;
+    left: 40%;
+    width: 400px;
+    display: inline-block;
+}
+
+#searchButton {
+    margin-left: 155px;
+    margin-top: 20px;
+    padding: 13px;
+    font-size: 25px;
+    border-radius: 16px;
+}
+
+span {
+    color: black
 }
 
 .navBar {
@@ -34,8 +57,11 @@ body {
     background: none;
     border: none;
     padding: 0;
-    color: white;
-    font-size: 1.5em;
+    color: black;
+    text-decoration: underline;
+    font-size: 1.2em;
+    padding-bottom: 20px;
+    cursor: pointer;
 }
 
 /* index.html */
@@ -46,19 +72,26 @@ body {
 }
 
 #topicsHolder {
-    border: 2px solid red;
     position: relative;
-    top: 20%;
+    top: 5%;
     left: 10em;
     width: 80%;
 }
 
-#newTopic {
+.newContent {
     float: right;
+    cursor: pointer;
+    padding: 15px;
+    font-size: 1.5em;
+    border-radius: 16px;
+    background-color: rgba(55, 0, 255, 0.226);
+    transition-duration: 0.4s;
 }
 
+
+
+
 #topicsContainer {
-    border: 2px solid red;
     position: relative;
     top: 100px;
 }
@@ -72,29 +105,31 @@ body {
     padding-bottom: 1em;
 }
 
-.topicInfoElement {
+.infoElement {
+    font-family: Poppins;
     margin-right: 5em;
     font-size: 2em;
 }
 
-.topicRow {
+.dataRow {
     padding-top: 1em;
     display: flex;
 }
 
-.topicContentTest {
+.dataContent {
     margin-left: 11em;
     text-align: center;
     width: 23%;
+    color: rgba(58, 55, 255, 0.8);
 }
 
-.topicCreatedBy {
+.dataCreatedBy {
     width: 10%;
     padding-left: 2.5em;
     text-align: center;
 }
 
-.topicDateCreated {
+.dataDateCreated {
     width: 10%;
     padding-left: 11em;
     text-align: center;
@@ -214,4 +249,126 @@ span.password {
     .cancelbtn {
         width: 100%;
     }
+}
+
+
+/* Claims.html */
+#claimsPage {
+    color: white;
+    height: 100vh;
+    width: 100vw;
+}
+
+#claimsHolder {
+    position: relative;
+    top: 5%;
+    left: 10em;
+    width: 80%;
+}
+
+#newClaim {
+    float: right;
+}
+
+#claimsContainer {
+    position: relative;
+    top: 100px;
+}
+
+#claimInfo {
+    position: relative;
+    left: 20%;
+    text-align: center;
+    color: black;
+    display: inline-block;
+    padding-bottom: 1em;
+}
+
+/* Replies.html */
+#repliesPage {
+    color: white;
+    height: 100vh;
+    width: 100vw;
+}
+
+#repliesHolder {
+    /*border: 2px solid red;*/
+    position: relative;
+    top: 5%;
+    left: 10em;
+    width: 80%;
+}
+
+#newReply {
+    float: right;
+}
+
+#repliesContainer {
+    /*border: 2px solid red;*/
+    position: relative;
+    top: 100px;
+}
+
+#repliesInfo {
+    position: relative;
+    left: 12%;
+    text-align: center;
+    color: black;
+    display: inline-block;
+    padding-bottom: 3em;
+}
+
+
+.replyCreatedBy {
+    padding-bottom: 3px;
+    margin-top: 0.5em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.replyRelation {}
+
+.replyContent {
+    padding-top: 10px;
+    margin-bottom: 0.5em;
+}
+
+#replyRow {
+    padding-top: 0.5em;
+    margin-bottom: 25px;
+    margin-left: 11em;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+#container2 {
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    border-radius: 16px;
+    padding: 0.01em 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rootReply {
+    border: 1px solid rgba(58, 58, 58, 0.8);
+    border-radius: 16px;
+    padding: 0.01em 16px;
+}
+
+.relatedClaims {
+    position: relative;
+    left: 12%;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.deleteButton {
+    margin-left: 200px;
+}
+
+.newContentContainer {
+    position: relative;
+    top: 15vh;
+    left: 25%;
+    width: 40%;
 }

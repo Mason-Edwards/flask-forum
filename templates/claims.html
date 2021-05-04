@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Claims Page</title>
+{% endblock %}
+
+{% block body %}
+<section id="claimsPage">
+    <div id="searchBar">
+        <form action="/search" method="POST">
+            <input type="text" placeholder="Search.." name="searchBar" style="border: 1px solid black;">
+            <button id="searchButton" type="submit">Search</button>
+        </form>
+    </div>
+    <div id="claimsHolder">
+        <form action="/newclaim">
+            <button type="submit" class="newContent">New Claim</button>
+        </form>
+        <div id="claimsContainer">
+            <div id="claimInfo">
+                <span class="infoElement">Claim</span> <span class="infoElement" style="margin-left: 1.2em;">Created
+                    By</span> <span class="infoElement">Date Created</span>
+            </div>
+
+            <!-- Python code to load all the topics should go here-->
+
+            <!-- Change this  to claims info-->
+            {% for (claim) in claimData %}
+            <form name="claimsForm" action="/replies" method="POST">
+                <div class="dataRow">
+                    <div class="dataContent"><button type="submit" class="btnText" name="claimData"
+                            value="{{ (claim[0]) }}">{{ (claim[0]) }}</button></div>
+                    <div class="dataCreatedBy"><span>{{ (claim[1]) }}</span></div>
+                    <div class="dataDateCreated"><span>{{ (claim[2]) }}</span></div>
+
+            </form>
+            {% if session["admin"] == "1"%}
+            <form name="deleteButton" action="/deleteclaim" method="POST">
+                <div class="deleteButton"><button type="submit" class="btnText" name="claim" value=" {{ claim[0] }}">
+                        Delete Claim</button></div>
+                {% endif %}
+            </form>
+        </div>
+        {% endfor %}
+
+        <!-- python for here to genereate topics-->
+    </div>
+    </div>
+</section>
+{% endblock %}

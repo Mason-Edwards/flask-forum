@@ -1,5 +1,11 @@
 TODO:
 	Add Date Created to topic and add that to the html code
 	Clean up main.css for unused code.
-	If user is logged in then change nav bar option to logout
-	If user clicks new topic and they are not logged in then ask them to login
+
+    Change for loops to use indexing like getting topicID in claim route
+    Create a home button
+
+
+
+
+    $env:FLASK_ENV = "development"

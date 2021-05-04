@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+
+
+<!-- Macros -->
+{% macro displayReply(reply) %}
+
+{% if reply[3] == None %}
+<div id="replyRow" class="rootReply">
+    <span class="replyCreatedBy">{{reply[2] }} - {{ reply[4] }}</span>
+    <span class="replyContent">{{reply[1] }}</span>
+
+    {% if session["admin"] == "1"%}
+    <form name="deleteButton" action="/deletereply" method="POST">
+        <div class="deleteButton" style="margin-left: 0;"><button type="submit" class="btnText" name="reply"
+                value=" {{ reply[1] }}" style="font-size: 16px; margin-left: 0; padding-bottom: 3px;">
+                Delete Reply</button></div>
+        {% endif %}
+    </form>
+</div>
+
+{{displayReplyToReplyRecursive(reply, 40)}}
+{% endif %}
+{% endmacro%}
+
+{% macro displayReplyToReplyRecursive(reply, margin) %}
+<!-- Loop though all replies again and see if anything contains its replyID  -->
+{% for (nextReply) in replyData %}
+{% if nextReply[3] == reply[0] %}
+<div style="padding-left: {{margin}}px;" id="replyRow">
+    <div id="container2">
+        <span class="replyCreatedBy">{{ nextReply[2]}} - {{nextReply[4]}} </span>
+        <span class="replyContent">{{nextReply[1]}}</span>
+        </form>
+        {% if session["admin"] == "1"%}
+        <form name="deleteButton" action="/deletereply" method="POST">
+            <div class="deleteButton" style="margin-left: 0;"><button type="submit" class="btnText" name="reply"
+                    value=" {{ nextReply[1] }}" style="font-size: 16px; margin-left: 0; padding-bottom: 3px;">
+                    Delete Reply</button></div>
+            {% endif %}
+        </form>
+    </div>
+
+</div>
+
+{{ displayReplyToReplyRecursive(nextReply, margin+40)}}
+{% endif %}
+{% endfor %}
+
+{% endmacro %}
+
+{% block head %}
+<title>Replies Page</title>
+{% endblock %}
+
+{% block body %}
+<section id="repliesPage">
+    <div id="repliesHolder">
+        <form action="/newreply">
+            <button type="submit" class="newContent">New Reply</button>
+        </form>
+        <div id="repliesContainer">
+            <div id="repliesInfo">
+                <span class="infoElement">{{ claimContent }} </span>
+            </div>
+            <p class="relatedClaims">This claim relates to:<br />
+                {% for s in relationData%}
+
+                {{ s[3] }} : {{ s[2] }} <br />
+
+                {% endfor%}
+
+            </p>
+            <!-- Python code to load all the topics should go here-->
+
+            <!-- Display all replies -->
+            {% for (reply) in replyData %}
+            {{ displayReply(reply)}}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

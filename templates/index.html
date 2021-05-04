@@ -1,33 +1,47 @@
 {% extends "base.html" %}
 
 {% block head %}
-
+<title>Topics Page</title>
 {% endblock %}
 
 {% block body %}
 <section id="topicsPage">
+    <div id="searchBar">
+        <form action="/search" method="POST">
+            <input type="text" placeholder="Search.." name="searchBar" style="border: 1px solid black;">
+            <button id="searchButton" type="submit">Search</button>
+        </form>
+    </div>
     <div id="topicsHolder">
         <form action="/newtopic">
-            <button type="submit" id="newTopic">New Topic</button>
+            <button type="submit" class="newContent">New Topic</button>
         </form>
         <div id="topicsContainer">
             <div id="topicInfo">
-                <span class="topicInfoElement">Topic</span> <span class="topicInfoElement"
-                    style="margin-left: 1.2em;">Created By</span> <span class="topicInfoElement">Date Created</span>
+                <span class="infoElement">Topic</span> <span class="infoElement" style="margin-left: 1.2em;">Created
+                    By</span> <span class="infoElement">Date Created</span>
             </div>
 
             <!-- Python code to load all the topics should go here-->
 
             {% for (topic) in topicData %}
-            <div class="topicRow">
-                <div class="topicContentTest"><span>{{ (topic[0]) }}</span></div>
-                <div class="topicCreatedBy"><span>{{ (topic[1]) }}</span></div>
-                <div class="topicDateCreated"><span>10/10/2000</span></div>
-            </div>
-            {% endfor %}
-
-            <!-- python for here to genereate topics-->
+            <form name="topicForm" action="/claims" method="POST">
+                <div class="dataRow">
+                    <div class="dataContent"><button type="submit" class="btnText" name="topicData"
+                            value="{{ (topic[0]) }}">{{ (topic[0]) }}</button></div>
+                    <div class="dataCreatedBy"><span>{{ (topic[1]) }}</span></div>
+                    <div class="dataDateCreated"><span>{{ (topic[2] )}}</span></div>
+            </form>
+            {% if session["admin"] == "1"%}
+            <form name="deleteButton" action="/deletetopic" method="POST">
+                <div class="deleteButton"><button type="submit" class="btnText" name="topic" value=" {{ topic[0] }}">
+                        Delete Topic</button></div>
+                {% endif %}
+            </form>
         </div>
+        {% endfor %}
+
+        <!-- python for here to genereate topics-->
     </div>
 </section>
 {% endblock %}

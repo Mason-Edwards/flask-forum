@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>New Reply</title>
+{% endblock %}
+
+{% block body %}
+<section>
+    <div class="newContentContainer">
+        <form action="/createreply" method="POST">
+            <label for="reply">Please Enter Your Reply</label>
+            <input type="text" name="reply" placeholder="Please Enter your reply" required>
+            <br />
+            <br />
+            <!-- Create dropdox box for relationship-->
+            <p>Select claim or reply to reply to.</p>
+            <select name="replyTo" id="replyTo">
+                <option value="'{{ claim }}' 'claim' "> {{ claim }}</option>
+
+                {% for (reply) in replies %}
+                <option value="'{{ reply }}' 'reply' ">{{ reply }}</option>
+                {% endfor%}
+            </select>
+            <br />
+            <br />
+            <p>Relationship</p>
+            <select name="relationship" id="relationship">
+                <!--
+                <option value="none">None</option>
+                <option value="opposed">Opposed</option>
+                <option value="equivalent">Equivalent</option>
+               -->
+            </select>
+            <br />
+            <br />
+
+
+            <button type="submit">Create Reply</button>
+        </form>
+    </div>
+</section>
+
+<!-- Script tag to handle dynamic array -->
+<script>
+    var claimRelation = new Array("Clarification", "Supporting Argument", "Counter Argument")
+    var replyRelation = new Array("Evidence", "Support", "Rebuttal")
+
+    function addOption(id, string) {
+        var dropdown = document.getElementById(id);
+        dropdown.options[dropdown.options.length] = new Option(string);
+    }
+
+    function clearDropdown(id) {
+        var dropdown = document.getElementById(id);
+        dropdown.options.length = 0;
+    }
+
+    function loadDropdown(id, options) {
+        for (var i = 0; i < options.length; ++i) {
+            addOption(id, options[i]);
+        }
+    }
+
+    function dynamicDropdown() {
+        var dropdown = document.getElementById("replyTo");
+
+        clearDropdown("relationship")
+        if (dropdown.selectedIndex > 0) {
+            loadDropdown("relationship", replyRelation)
+        } else {
+            loadDropdown("relationship", claimRelation)
+        }
+    }
+
+    loadDropdown("relationship", claimRelation)
+
+    document.getElementById("replyTo").onchange = dynamicDropdown;
+</script>
+
+{% endblock %}
